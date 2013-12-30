@@ -7,6 +7,7 @@ module MotionModel
     end
 
     def log(sql, type, result)
+      return
       return if @options["log_#{type}".to_sym] == false
       if @logger
         @logger.call(sql, result.to_s)
