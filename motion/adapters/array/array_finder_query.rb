@@ -39,7 +39,7 @@ module MotionModel
     end
     
     def translate_case(item, case_sensitive)#nodoc
-      item = item.underscore if case_sensitive === false && item.respond_to?(:underscore)
+      item = item.downcase if case_sensitive === false && item.respond_to?(:downcase)
       item
     end
     
@@ -70,7 +70,7 @@ module MotionModel
     
     # performs a set-inclusion test.
     #
-    # Task.find(:id).id([3, 5, 9])
+    # Task.find(:id).in([3, 5, 9])
     def in(set)
       @collection = @collection.collect do |item|
         item if set.include?(item.send(@field_name.to_sym))
